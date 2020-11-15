@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'userimages', component: UserImagesComponent },
+  { path: 'userimages/:id', component: UserImagesComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
