@@ -4,13 +4,16 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const errorHandler = require('_middleware/error-handler');
+const morgan = require('morgan');
 
+app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 // api routes
 app.use('/users', require('./users/users.controller'));
+app.use('/images', require('./photos/photos.controller'));
 
 // global error handler
 app.use(errorHandler);
