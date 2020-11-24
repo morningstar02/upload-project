@@ -1,1 +1,15 @@
-<p>user-images works!</p>
+<div fxLayout="row wrap" fxLayoutGap="25px" style="padding-top: 20px;padding-left: 20px;">
+    <div *ngFor="let image of images; index as i; first as isFirst" style="width: 500px; height: 500px;">
+
+        <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{image.photoName}}</mat-card-title>
+            </mat-card-header>
+            {{i + 1}}/{{images.length}}.  
+            <img [src]='image.imageURL' alt='' 
+            style="text-align:center; vertical-align:middle; max-width:400px;  max-height:400px;">
+        
+          </mat-card>
+    </div>
+</div>

@@ -2,10 +2,11 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a class="nav-item nav-link" routerLink="/userimages" routerLinkActive="active">Images</a>
+      <a class="nav-item nav-link" (click)="openFileSelectionDialog()">(+)Upload</a>
       <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
+<input type="file" style="display: none" onclick="this.value=null;" #file (change)="selectFile($event)" accept='image/*' multiple>
 
 <!-- main app container -->
 <div class="app-container" [ngClass]="{ 'bg-light': user }">

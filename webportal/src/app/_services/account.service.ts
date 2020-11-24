@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { User } from '../_models';
+import { User, Image } from '../_models';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -49,9 +49,28 @@ export class AccountService {
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
+    
+
+    uploadFile(file: any, filename: any, username: string) {
+        try {
+          const formData = new FormData();
+          formData.append('filename', filename);
+          formData.append('username', username);
+          const blob = new Blob([file], { type: 'text/html'});
+          formData.append('file', blob);
+          return this.http.post<any>(`${environment.apiUrl}/images/upload` , formData).pipe(map(response => response));
+        } catch (err) {
+          console.log(err);
+          throw err;
+        }
+      }
 
     getById(id: string) {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+        return this.http.get<Image[]>(`${environment.apiUrl}/users/${id}`);
+    }
+
+    getImagesById(id: string) {
+        return this.http.get<User>(`${environment.apiUrl}/images/userimages/${id}`);
     }
 
     update(id, params) {

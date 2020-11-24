@@ -17,6 +17,7 @@ router.delete('/:id', authorize(), _delete);
 module.exports = router;
 
 function authenticateSchema(req, res, next) {
+    console.log('#######')
     const schema = Joi.object({
         username: Joi.string().required(),
         password: Joi.string().required()
@@ -25,6 +26,7 @@ function authenticateSchema(req, res, next) {
 }
 
 function authenticate(req, res, next) {
+    console.log('$$$$$$$')
     userService.authenticate(req.body)
         .then(user => res.json(user))
         .catch(next);

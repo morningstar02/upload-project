@@ -7,10 +7,10 @@ const errorHandler = require('_middleware/error-handler');
 const morgan = require('morgan');
 
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-
+global.__basedir = __dirname;
 // api routes
 app.use('/users', require('./users/users.controller'));
 app.use('/images', require('./photos/photos.controller'));

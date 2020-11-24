@@ -5,7 +5,10 @@ module.exports = model;
 function model(sequelize) {
     const attributes = {
         photoName: { type: DataTypes.STRING, allowNull: false },
-        username: { type: DataTypes.STRING, allowNull: false }
+        username: { type: DataTypes.STRING, allowNull: false },
+        data: {
+            type: DataTypes.BLOB("long"), allowNull: false
+          },
     };
 
     const options = {
